@@ -82,8 +82,6 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
-                <field name="image" filename="image_name"/>
-                <field name="image_name" invisible="1"/>
                 <xpath expr="//page[@name='accounting']"
                  position="after">
                     <page string="Medical Aid Plans" attrs="{'invisible':[('is_a_medical_aid','!=',True)]}">

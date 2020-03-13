@@ -24,8 +24,6 @@ class res_partner(models.Model):
         else:
             self.property_payment_term_id = self.env.ref('account.account_payment_term_15days').id
 
-    image = fields.binary ("Image", help="Select image here")
-    image_name = fields.Char("image")
     is_a_medical_aid = fields.Boolean(string="Is a Medical Aid")
     is_a_medical_aid_administrator = fields.Boolean(string="Is a Medical Aid Administrator")
     medical_aid_plan_ids = fields.One2many('medical.aid.plan', 'medical_aid_id', string="Plans")
