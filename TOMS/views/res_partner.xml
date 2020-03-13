@@ -238,6 +238,7 @@
                             <field name="medical_aid_no"/>
                             <field name="dependent_code"/>
                             <field name="employer"/>
+                            <field name="file1" filename="file1_name"/>
                             <field name="occupation"/>
                             <field name="msv_partner_id" domain="[('msv_later_button', '=', True)]"/>
                             <field name="is_key_member" invisible="1"/>
