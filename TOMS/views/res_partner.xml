@@ -90,10 +90,10 @@
                                <field name="code"/>
                                <field name="name"/>
                                <field name="medical_aid_id"/>
-                               <field name="account_image" filename="account_image_name"/>
-                               <field name="account_image_name" invisible="1"/>
                             </tree>
                        </field>
+                       <field name="account_image" filename="account_image_name"/>
+                       <field name="account_image_name" invisible="1"/>
                     </page>
                 </xpath>
 
