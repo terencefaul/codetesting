@@ -92,8 +92,6 @@
                                <field name="medical_aid_id"/>
                             </tree>
                        </field>
-                       <field name="account_image" filename="account_image_name"/>
-                       <field name="account_image_name" invisible="1"/>
                     </page>
                 </xpath>
 
