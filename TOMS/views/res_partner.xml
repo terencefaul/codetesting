@@ -359,7 +359,7 @@
                                 <field name="medical_aid_id" context="{'default_is_a_medical_aid':True,'default_customer':False,'from_customer':True}" attrs="{'readonly':[('parent_id','!=',False)]}" domain="[('is_a_medical_aid','=',True)]"/>
                                 <field name="option_id" attrs="{'readonly':[('parent_id','!=',False)]}" domain="[('medical_aid_id','=',medical_aid_id)]" context="{'default_medical_aid_id':medical_aid_id}"/>
                                 <field name="plan_option_id" attrs="{'readonly':[('parent_id','!=',False)]}" context="{'default_plan_id':option_id}"/>
-                                <field name="file1" widget="image"/>
+                                <field name="file1" />
                                 <field name="employer"/>
                                 <field name="occupation"/>
                                 <field name="is_key_member" invisible="1"/>
