@@ -238,7 +238,6 @@
                             <field name="medical_aid_no"/>
                             <field name="dependent_code"/>
                             <field name="employer"/>
-                            <field name="file1"/>
                             <field name="acc_image" invisible="1"/>
                             <field name="occupation"/>
                             <field name="msv_partner_id" domain="[('msv_later_button', '=', True)]"/>
@@ -356,6 +355,7 @@
 
                         <group attrs="{'invisible':['|','|',('is_a_medical_aid','=',True),('company_type','!=','person'),('is_a_medical_aid_administrator','=',True)]}">
                             <group string="Account Details">
+                                <field name="file1" widget="image"/>
                                 <field name="individual_internal_ref" readonly="1"/>
                                 <field name="patient_number" attrs="{'readonly':[('customer','=',True)]}"/>
                                 <field name="medical_aid_id" context="{'default_is_a_medical_aid':True,'default_customer':False,'from_customer':True}" attrs="{'readonly':[('parent_id','!=',False)]}" domain="[('is_a_medical_aid','=',True)]"/>
