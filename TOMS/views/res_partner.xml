@@ -379,7 +379,7 @@
                                 <field name="communication"/>
                                 <field name="file_no"/>
                                 <field name="old_system_no"/>
-                                <field name="acc_image" string="account Image"/>
+                                <field name="acc_image" string="account Image" widget="image"/>
                             </group>
                             <group>
                                 <field name="birth_date"/>
