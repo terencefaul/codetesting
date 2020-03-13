@@ -238,7 +238,7 @@
                             <field name="medical_aid_no"/>
                             <field name="dependent_code"/>
                             <field name="employer"/>
-                            <field name="file1" widget='image'/>
+                            <field name="file1"/>
                             <field name="acc_image" invisible="1"/>
                             <field name="occupation"/>
                             <field name="msv_partner_id" domain="[('msv_later_button', '=', True)]"/>
