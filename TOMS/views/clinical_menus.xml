@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="action_partner_customer" model="ir.actions.act_window">
+            <field name="name">Customer</field>
+            <field name="res_model">res.partner</field>
+            <field name="domain">[('customer', '=', True),('msv_later_button', '=', False)]</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_id" ref="base.action_partner_form"/>
+        </record>
+
+        <menuitem id="main_menu_clinical_app" web_icon="TOMS,static/description/clinical.png" name="Clinical" sequence="2" />
+
+        <menuitem id="clinical_calendar_menu" name="Calendar" parent="main_menu_clinical_app" sequence="1" action="aspl_action_calendar_event"/>
+
+        <menuitem id="clinical_customer" name="Customer" parent="main_menu_clinical_app" sequence="2"/>
+        <menuitem id="clinical_customers" name="Customer" parent="clinical_customer" sequence="1" action="action_partner_customer"/>
+
+
+        <menuitem id="clinical_medical_aid_menu" name="Medical Aid" parent="main_menu_clinical_app" sequence="3"/>
+
+        <menuitem id="clinical_medical_aids_sub_menu" name="Medical Aid" parent="clinical_medical_aid_menu" sequence="1" action="action_medical_aid"/>
+
+        <menuitem id="clinical_menu_exam" name="Exam" parent="main_menu_clinical_app" sequence="4" action="action_partner_customer"/>
+
+        <menuitem id="clinical_menu_jobs" name="Jobs" parent="main_menu_clinical_app" sequence="4" action="project.action_view_task"/>
+
+        <menuitem id="clinical_menu_currunt_exam" name="Current Exams" parent="clinical_menu_exam" sequence="1" action="action_clinical_examination"/>
+
+        <menuitem id="clinical_menu_previous_exam" name="Previous Exams" parent="clinical_menu_exam" sequence="2" action="action_clinical_examination_deactive"/>
+
+        <menuitem id="clinical_menu_invoice" name="Invoices" parent="clinical_menu_exam" sequence="3" action="account.action_invoice_tree1"/>
+
+        <record id="project.action_view_task" model="ir.actions.act_window">
+            <field name="name">Jobs</field>
+            <field name="domain" eval="[('stage_id','in', [ref('TOMS.stage_queued'),
+                                                           ref('stage_inprogress'),
+                                                           ref('stage_complete'),
+                                                           ref('stage_customer_collection')])]"/>
+        </record>
+        <menuitem id="project.menu_action_view_task" name="Jobs" parent="project.menu_project_management" sequence="5"/>
+
+        <menuitem id="sales_customer_invoice" name="Customer Invoices" parent="sale.menu_sale_invoicing" action="account.action_invoice_tree1" sequence="1"/>
+
+	</data>
+</odoo>

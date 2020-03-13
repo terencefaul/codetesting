@@ -1,0 +1,80 @@
+<odoo>
+
+    <record id="inherit_res_users_form_mediswitch_test1" model="ir.ui.view">
+        <field name="name">Users</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <field name="login" position="before">
+                <group>
+                    <field name="op_number"/>
+                </group>
+            </field>
+        </field>
+    </record>
+
+     <record id="view_partner_form_inherit_for_mediswitch" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.for.mediswitch</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form//sheet" position="before">
+                 <header>
+                    <button name="submit_msv" string="Submit Msv" class="oe_highlight" type="action"/>
+                </header>
+            </xpath>
+        </field>
+    </record>
+
+    <act_window
+            id="action_bulk_msv"
+            name="Bulk MSV Now"
+            res_model="bulk.msv"
+            src_model="res.partner"
+            view_type="form" view_mode="form"
+            key2="client_action_multi" target="new"/>
+
+
+    <act_window id="action_mark_msv_later"
+            name="Mark to Msv Later"
+            src_model="res.partner"
+            res_model="mark.msv"
+            view_type="form" view_mode="form"
+            key2="client_action_multi" target="new"/>
+
+    <record id="form_view_for_mark_msv" model="ir.ui.view">
+        <field name="name">Msv's</field>
+        <field name="model">mark.msv</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <label for="name" string="Are you sure you want to Mark Customer to Msv later"></label>
+                    <field name="name"></field>
+                </sheet>
+                <footer>
+                    <button type="object" string="Ok" name="mark_to_msv" class="btn-primary"></button>
+                    <button string="Cancel" special="cancel" class="btn-secondary"></button>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="form_view_for_bulk_msv" model="ir.ui.view">
+        <field name="name">Msv's</field>
+        <field name="model">bulk.msv</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <label for="name" string="Are you sure you want to Unmark Customer from Msv later"></label>
+                    <field name="name"></field>
+                    <footer>
+                        <button type="object" string="Ok" name="bulk_for_msv" class="btn-primary"></button>
+                        <button string="Cancel" special="cancel" class="btn-secondary"></button>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+</odoo>

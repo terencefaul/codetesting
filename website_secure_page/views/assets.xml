@@ -1,0 +1,7 @@
+<odoo>
+    <template id="inherit_assets_frontend" inherit_id="web.assets_frontend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/website_secure_page/static/src/js/website.js"/>
+        </xpath>
+    </template>
+</odoo>

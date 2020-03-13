@@ -1,0 +1,16 @@
+<template id="template">
+    <t t-extend="website.pagesMenu.page_info">
+        <t t-jquery="#advances_page_info" t-operation="append">
+            <div class="form-group row">
+                <label class="control-label col-md-5" for="secure_page">Secure Page</label>
+                <div class="col-sm-2">
+                    <label class="o_switch" for="secure_page">
+                        <input type="checkbox" t-att-checked="widget.page.secure_page ? true : undefined"
+                               id="secure_page"/>
+                        <span/>
+                    </label>
+                </div>
+            </div>
+        </t>
+    </t>
+</template>

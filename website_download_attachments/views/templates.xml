@@ -1,0 +1,71 @@
+<odoo>
+
+    <template id="portal_layout" name="Portal layout: Download menu entry" inherit_id="portal.portal_breadcrumbs"
+              priority="40">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'download' or download"
+                t-attf-class="breadcrumb-item #{'active ' if not timesheet else ''}">
+                <a t-if="download" t-attf-href="/my/downloads?{{ keep_query() }}">Download</a>
+                <t t-else="">Download</t>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_menu_download"
+              inherit_id="portal.portal_my_home" priority="15">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Download</t>
+                <t t-set="url" t-value="'/my/downloads'"/>
+                <t t-set="count" t-value="download_count"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="website_download_attachments.download" name="Download">
+
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Downloads</t>
+            </t>
+            <t t-if="not attachments">
+                <div class="alert alert-warning mt8" role="alert">
+                    There are no Downloads.
+                </div>
+            </t>
+            <t t-if="attachments" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th/>
+                    </tr>
+                </thead>
+                <t t-foreach="attachments" t-as="attachment">
+                    <tr>
+                        <td>
+                            <t t-esc="attachment.display_name"/>
+                        </td>
+                        <td>
+                            <t t-esc="time.strftime('%b %d,%Y', time.strptime(str(attachment.create_date.replace(microsecond=0)),'%Y-%m-%d %H:%M:%S'))"/>
+                        </td>
+                        <td>
+                            <a t-if="attachment.mimetype not in ('image/png', 'image/jpeg')"
+                               class="o_overlay_download" target="_blank"
+                               t-attf-href="/web/content/#{attachment.id}?download=true">
+                                <i class="fa fa-download"/>
+                            </a>
+                            <a t-if="attachment.mimetype in ('image/png','image/jpg','image/jpeg')"
+                               class="o_overlay_download" target="_blank"
+                               t-attf-href="/web/image/#{attachment.id}?download=true">
+                                <i class="fa fa-download"/>
+                            </a>
+                        </td>
+                    </tr>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

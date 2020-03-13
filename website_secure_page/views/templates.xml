@@ -1,0 +1,18 @@
+<odoo>
+    <template id="website_secure_page_list_website_pages" inherit_id="website.list_website_pages">
+        <xpath expr="//table/thead/tr/th[hasclass('text-center')][3]" position="after">
+            <th class="text-center">
+                <i title="Is the page Secure?" class="fa fa-lock"></i>
+            </th>
+        </xpath>
+    </template>
+
+    <template id="website_secure_page_one_page_line" inherit_id="website.one_page_line">
+        <xpath expr="//tr/td[hasclass('text-center')][3]" position="after">
+            <td class="text-center">
+                <i t-if="page.secure_page" class="fa fa-check" title="Secure Page"/>
+                <i t-else="" class="fa fa-times text-muted" title="Not Secure Page"/>
+            </td>
+        </xpath>
+    </template>
+</odoo>

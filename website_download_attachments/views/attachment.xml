@@ -1,0 +1,12 @@
+<odoo>
+    <record model="ir.ui.view" id="website_view_attachment_form">
+        <field name="name">ir.attachment</field>
+        <field name="model">ir.attachment</field>
+        <field name="inherit_id" ref="base.view_attachment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='url']" position="after">
+                <field name="is_portal_visible"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
